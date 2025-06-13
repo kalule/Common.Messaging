@@ -35,7 +35,7 @@ namespace Common.Messaging.Interfaces
                     IsBodyHtml = true
                 };
 
-                foreach (var recipient in request.To.Split(',', ';'))
+                foreach (var recipient in request.Recipients)
                 {
                     if (!string.IsNullOrWhiteSpace(recipient))
                         message.To.Add(recipient.Trim());
@@ -59,16 +59,16 @@ namespace Common.Messaging.Interfaces
                 }
 
                 await client.SendMailAsync(message, cancellationToken);
-                _logger.LogInformation("Email sent successfully to: {Recipients}", request.To);
+                _logger.LogInformation("Email sent successfully to: {Recipients}", request.Recipients);
             }
             catch (SmtpException smtpEx)
             {
-                _logger.LogError(smtpEx, "SMTP error occurred while sending email to: {Recipients}", request.To);
+                _logger.LogError(smtpEx, "SMTP error occurred while sending email to: {Recipients}", request.Recipients);
                 throw; 
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Unexpected error occurred while sending email to: {Recipients}", request.To);
+                _logger.LogError(ex, "Unexpected error occurred while sending email to: {Recipients}", string.Join(", ", request.Recipients));
                 throw;
             }
         }

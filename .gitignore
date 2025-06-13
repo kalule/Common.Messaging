@@ -8,6 +8,7 @@ obj/
 *.snupkg
 .nuget/
 
+
 # Visual Studio settings
 .vs/
 *.user

@@ -1,8 +1,8 @@
 # Common.Messaging
 
-**Common.Messaging** is a reusable .NET class library for managing email sending, messaging contracts, and integration with SMTP or other delivery services. It is designed for use in microservice-based architectures.
+Common.Messaging is a reusable .NET class library for managing email sending, messaging contracts, and integration with SMTP or other delivery services. It is designed for use in microservice-based architectures.
 
-## 📦 Features
+## Features
 
 - `EmailRequest` model for strongly-typed message payloads
 - `IEmailSender` interface for flexible transport implementations
@@ -10,13 +10,13 @@
 - Designed for DI with `Microsoft.Extensions.Logging` and `IOptions<T>`
 - Supports attachments as Base64 strings
 
-## 🛠 Requirements
+## Requirements
 
 - .NET 6, 7, or 8
 - `Microsoft.Extensions.Logging`
 - `Microsoft.Extensions.Options`
 
-## 🚀 Usage
+## Usage
 
 ```csharp
 var email = new EmailRequest
